@@ -10,11 +10,12 @@ const initDb=async(callback)=>{
     }
     MongoClient.connect(process.env.MONGODB_URL)
     .then((client)=>{
-        datatbase = client.db("jewelsDB");
+        database = client.db(process.env.DB_NAME || "jewelsDb");
         console.log("MongoDB connected");
         callback(null,database);
     })
     .catch((err) => {
+        console.log('DB connection failed:',err);
         callback(err);
     });
 };

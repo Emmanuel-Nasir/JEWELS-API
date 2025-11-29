@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const jewelController = require('../controllers/jewels');
+
+
+/**
+ * @swagger
+ * /jewels:
+ *   get:
+ *     summary: Get all jewels
+ *     tags: [Jewels]
+ */
+
 // Route to get all jewels
 router.get('/', jewelController.getJewels);
 

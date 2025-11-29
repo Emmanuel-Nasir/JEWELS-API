@@ -1,23 +1,32 @@
 const express=require('express');
-const app= express();
+const bodyParser = require('body-parser');
 const mongoDb = require('./db/connect');
-const jewelsRoutes = require('./routes/jewels');
+const app =express();
 
+const port = process.env.PORT || 3001;
 
-app.use(express.json());
+app.use(bodyParser.json());
 
-app.get('/',(req,res)=>{
-    res.send('Jewels API is running!');
-});
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Headers',
+         'Origin, X-Requested-With, Content-Type, Accept, Z-key');
+    res.setHeader('Access-Control-Allow-Methods',
+         'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    next();
+
+})
+
 //jewels routes
-app.use('/jewels',jewelsRoutes);
+app.use('/',require('./routes'));
 
 //connect to database before starting the server
 mongoDb.initDb((err) => {
     if (err) {
         console.error(err);
     } else {
-        app.listen(3000, () => console.log('Server running on port 3000'));
+                   app.listen(port, () => {console.log(`Database is listening and node Running on port ${port}`)})
+
     }
 });
 
