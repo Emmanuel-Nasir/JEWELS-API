@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const jewelController = require('../controllers/jewels');
+const { isAuthenticated } = require('../middleware/authenticate');
 
 
 /**
@@ -17,10 +18,10 @@ router.get('/', jewelController.getJewels);
 // Route to get a jewel by ID
 router.get('/:id', jewelController.getJewelById);
 
-router.post('/', jewelController.createJewel);
+router.post('/', isAuthenticated, jewelController.createJewel);
 
-router.put('/:id', jewelController.updateJewel); 
+router.put('/:id', isAuthenticated, jewelController.updateJewel); 
 
-router.delete('/:id', jewelController.deleteJewel);
+router.delete('/:id', isAuthenticated, jewelController.deleteJewel);
 
 module.exports = router;
