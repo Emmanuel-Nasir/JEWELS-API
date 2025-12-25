@@ -11,6 +11,12 @@ const port = process.env.PORT || 3001;
 const app =express();
 
 
+app.use((req, res, next) => {
+  req.url = req.url.replace(/\/+$/, '');
+  next();
+});
+
+
 app
     .use(bodyParser.json())
     .use(session
