@@ -5,7 +5,7 @@
     "description": "Jewels Api",
     "version": "1.0.0"
   },
-  "host": "localhost:3001",
+  "host": "https://jewels-api.onrender.com/",
   "basePath": "/",
   "schemes": [
     "http",
