@@ -12,7 +12,9 @@ const app =express();
 
 
 app.use((req, res, next) => {
-  req.url = req.url.replace(/\/+$/, '');
+  if (req.url.length > 1) {
+    req.url = req.url.replace(/\/+$/, '');
+  }
   next();
 });
 
