@@ -5,7 +5,7 @@ const doc = {
         title: 'Jewels Api',
         description: 'Jewels Api'
     },
-    host: "https://jewels-api.onrender.com/",
+    host: "jewels-api.onrender.com/",
     schemes: ['https']
 };
 const outputFile ='./swagger.json';
