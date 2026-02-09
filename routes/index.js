@@ -8,6 +8,7 @@ router.use('/', require('./swagger'));
 //   res.send('Hello World!');
 // });
 router.use('/jewels',require('./jewels.js'));
+router.use('/customers',require('./customers.js'));
 
 router.get('/login', passport.authenticate('github', (req, res) => {}));
 router.get('/logout', function(req, res,next) {
