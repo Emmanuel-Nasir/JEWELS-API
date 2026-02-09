@@ -11,13 +11,11 @@ const port = process.env.PORT || 3001;
 const app =express();
 
 
-app.use((req, res, next) => {
-  if (req.url.length > 1) {
-    req.url = req.url.replace(/\/+$/, '');
-  }
-  next();
-});
-
+// app.use((req, res, next) => {
+//   // Remove duplicate slashes like //jewels/
+//   req.url = req.url.replace(/\/\//g, '/');
+//   next();
+// });
 
 app
     .use(bodyParser.json())
